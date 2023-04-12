@@ -7,6 +7,7 @@ import ImageGrid from './ImageGrid';
 import { passwordImagesData } from '@/utils/images';
 import { StaticImageData } from 'next/image';
 import { hashGenerator } from '@/utils/generator';
+import { BiReset } from 'react-icons/bi';
 
 interface props {
 	setHashed: (newHash: string) => void;
@@ -17,6 +18,7 @@ function PasswordGenerator({ setHashed }: props) {
 	const [password, setPassword] = useState('');
 	const [gridIndexChosen, setGridIndexChosen] = useState<Array<number>>([]);
 	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(false);
 	const [snackbarOpen, setSnackbarOpen] = useState(false);
 
 	const handleImageChange = (file: number | StaticImageData) => {
@@ -47,11 +49,14 @@ function PasswordGenerator({ setHashed }: props) {
 	};
 
 	const generateHash = async () => {
+		setLoading(true);
+
 		const errorMessage = checkErrors();
 
 		if (errorMessage) {
 			setError(errorMessage);
 			setSnackbarOpen(true);
+			setLoading(false);
 			return;
 		}
 
@@ -60,7 +65,17 @@ function PasswordGenerator({ setHashed }: props) {
 			imageSrc: image?.src || '',
 			password: password,
 		});
+
 		setHashed(finalHash);
+		setLoading(false);
+	};
+
+	const resetForm = () => {
+		setImage(null);
+		setPassword('');
+		setGridIndexChosen([]);
+		setError('');
+		setLoading(false);
 	};
 
 	return (
@@ -100,8 +115,16 @@ function PasswordGenerator({ setHashed }: props) {
 			<button
 				onClick={generateHash}
 				className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+				disabled={loading}
 			>
-				Generate Hash
+				{loading ? 'Loading...' : 'Generate Hash'}
+			</button>
+			<button
+				title='Reset'
+				className='absolute top-4 right-4 text-2xl'
+				onClick={resetForm}
+			>
+				<BiReset />
 			</button>
 		</div>
 	);

@@ -9,7 +9,7 @@ function ChooseImage({
 }) {
 	return (
 		<div className='flex flex-col justify-center items-center gap-1'>
-			<p>Choose an image</p>
+			<p>Select an image</p>
 			<div className='w-96 h-96 bg-gray-400 bg-opacity-25 p-2 grid grid-cols-3 gap-2 overflow-y-auto'>
 				{passwordImagesData.map((e, i) => {
 					return (

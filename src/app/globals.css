@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 * {
-    @apply !font-mono;
+    @apply !font-mono select-none;
 }

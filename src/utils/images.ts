@@ -7,6 +7,12 @@ import img6 from '../assets/images/Frame 6.png';
 import img7 from '../assets/images/Frame 7.png';
 import img8 from '../assets/images/Frame 8.png';
 import img9 from '../assets/images/Frame 9.png';
+import img10 from '../assets/images/Frame 10.png';
+import img11 from '../assets/images/Frame 11.png';
+import img12 from '../assets/images/Frame 12.png';
+import img13 from '../assets/images/Frame 13.png';
+import img14 from '../assets/images/Frame 14.png';
+import img15 from '../assets/images/Frame 15.png';
 
 export const passwordImagesData = [
 	img1,
@@ -18,4 +24,10 @@ export const passwordImagesData = [
 	img7,
 	img8,
 	img9,
+	img10,
+	img11,
+	img12,
+	img13,
+	img14,
+	img15,
 ];
