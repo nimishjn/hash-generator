@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# New Password and Image Pattern User Authentication Schema
+
+<img width="1582" alt="image" src="https://user-images.githubusercontent.com/63140632/231839763-5587638d-b5dd-4887-96dc-ce05f65ad666.png">
+
+The proposed authentication system combines traditional password-based authentication with an image pattern-based authentication to enhance security. Users must set a password and create a unique image pattern as their login credentials, divided into 16 grids. The image is not stored on the backend server and is deleted immediately after the authentication process is complete.
+
+## 👨‍💻 Tech Stack
+- [NextJs](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Prerequisites
+
+* npm
+```sh
+npm install npm@latest -g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
+ 
+1. Clone the repo
+```sh
+git clone https://github.com/nimishjn/hash-generator.git
+```
+2. Change directory to riddler-frontend-2021
+```sh
+cd hash-generator
+```
+3. Install NPM packages
+```sh
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Run and build
+* Run in development server
+```sh
+npm run dev
+```
+* Build project
+```sh
+npm run build
+```
+* Run in production server (after completing build)
+```sh
+npm run start
+```
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+## 🎓 College project documentation
+https://docs.google.com/document/d/1KZGvFCrIQHq-Nlt-rPawrSzBEKFovA-KmBVIKbbCJLc
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 👾 Hashing Algorithm 
 
-## Learn More
+### Inputs:
+* Text password
+* Chosen image data
+* Index of grids chosen
 
-To learn more about Next.js, take a look at the following resources:
+### Steps:
+1. The chosen image is compressed into a 100 px by 100 px size.
+2. The base 64 data of the compressed image is extracted. Eg: data:image/png;base64,iVBORw0KGgoAAAANSU……
+3. The base 64 text is hashed using SHA512 and stored as "image_hash."
+4. The “image_hash” is split into 16 equal elements.
+5. The elements corresponding to the index of grids chosen are concatenated.
+6. The above concatenated text is merged with the text password and hashed using SHA512.
+7. Output the final hash from step 6.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Output:
+* Final hash
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 💻 Contributors
+<a href="https://github.com/nimishjn/hash-generator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nimishjn/hash-generator" />
+</a>
