@@ -23,7 +23,7 @@ function ImageGrid({ imageData, gridChosen, toggleGridIndexChosen }: props) {
 
 						return (
 							<div
-								className='relative border border-white flex items-center justify-center bg-opacity-50'
+								className='relative border-0.5 border-white flex items-center justify-center bg-opacity-50'
 								style={{
 									backgroundColor: gridChosen.find(
 										(i) => i === gridNumber
